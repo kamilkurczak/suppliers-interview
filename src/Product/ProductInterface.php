@@ -10,4 +10,9 @@ interface ProductInterface
      * @return array
      */
     public function toArray(): array;
+
+    /**
+     * @return string
+     */
+    public function getId(): string;
 }

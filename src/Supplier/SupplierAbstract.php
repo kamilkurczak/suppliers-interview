@@ -8,8 +8,8 @@ use App\Event\GetProductsEvent;
 use App\Event\IntegrationEvents;
 use App\Exception\InvalidParserException;
 use App\Parser\ParserInterface;
+use App\Product\ProductCollectionInterface;
 use App\Product\ProductDenormalizerInterface;
-use App\Product\ProductInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 abstract class SupplierAbstract implements SupplierInterface
@@ -43,16 +43,16 @@ abstract class SupplierAbstract implements SupplierInterface
     abstract protected function parseResponse(): array;
 
     /**
-     * @param ProductInterface $data
+     * @param ProductCollectionInterface $data
      * @return array
      */
-    abstract protected function denormalizeResponse(array $data): ProductInterface;
+    abstract protected function denormalizeResponse(array $data): ProductCollectionInterface;
 
     /**
-     * @return ProductInterface
+     * @return ProductCollectionInterface
      * @throws InvalidParserException
      */
-    public function getProducts(): ProductInterface
+    public function getProducts(): ProductCollectionInterface
     {
         $products = $this->denormalizeResponse(
             $this->parseResponse()

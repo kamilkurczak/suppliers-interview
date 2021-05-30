@@ -2,22 +2,22 @@
 
 namespace App\Event;
 
-use App\Product\ProductInterface;
+use App\Product\ProductCollectionInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
 class GetProductsEvent extends Event
 {
-    protected ProductInterface $products;
+    protected ProductCollectionInterface $products;
 
     protected string $supplierName;
 
-    public function __construct(ProductInterface $products, string $supplierName)
+    public function __construct(ProductCollectionInterface $products, string $supplierName)
     {
         $this->products = $products;
         $this->supplierName = $supplierName;
     }
 
-    public function getProducts(): ProductInterface
+    public function getProducts(): ProductCollectionInterface
     {
         return $this->products;
     }

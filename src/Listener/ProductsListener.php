@@ -30,10 +30,9 @@ class ProductsListener
     public function logProducts(Event $event): bool
     {
         if ($event instanceof GetProductsEvent) {
-            foreach ($event->getProducts()->toArray() as $product) {
-                $productKeys = array_keys($product);
+            foreach ($event->getProducts() as $product) {
                 $this->logger->info(
-                    'Product added: ' . $product[$productKeys[0]],
+                    'Product added: ' . $product->getId(),
                     ['supplier' => $event->getSupplierName()]
                 );
             }

@@ -4,8 +4,8 @@ namespace App\Supplier;
 
 use App\Exception\InvalidParserException;
 use App\Parser\ParserInterface;
+use App\Product\ProductCollectionInterface;
 use App\Product\ProductDenormalizerInterface;
-use App\Product\ProductInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 interface SupplierInterface
@@ -26,10 +26,10 @@ interface SupplierInterface
     );
 
     /**
-     * @return ProductInterface
+     * @return ProductCollectionInterface
      * @throws InvalidParserException
      */
-    public function getProducts(): ProductInterface;
+    public function getProducts(): ProductCollectionInterface;
 
     public function getName(): string;
 }

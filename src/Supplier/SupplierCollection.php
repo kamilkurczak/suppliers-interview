@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Supplier;
 
 use App\Exception\SupplierDoesNotExistsException;
-use App\Product\ProductInterface;
+use App\Product\ProductCollectionInterface;
 
 final class SupplierCollection
 {
@@ -24,11 +24,11 @@ final class SupplierCollection
 
     /**
      * @param string $supplierName
-     * @return ProductInterface
+     * @return ProductCollectionInterface
      * @throws SupplierDoesNotExistsException
      * @throws \App\Exception\InvalidParserException
      */
-    public function getProducts(string $supplierName): ProductInterface
+    public function getProducts(string $supplierName): ProductCollectionInterface
     {
         foreach ($this->suppliers as $supplier) {
             if ($supplier->getName() == $supplierName) {

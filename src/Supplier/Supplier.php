@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Supplier;
 
-use App\Event\GetProductsEvent;
-use App\Event\IntegrationEvents;
 use App\Product\ProductCollection;
-use App\Product\ProductInterface;
+use App\Product\ProductCollectionInterface;
 
 final class Supplier extends SupplierAbstract
 {
@@ -37,10 +35,10 @@ final class Supplier extends SupplierAbstract
     }
 
     /**
-     * @param ProductInterface $data
+     * @param ProductCollectionInterface $data
      * @return array
      */
-    protected function denormalizeResponse(array $data): ProductInterface
+    protected function denormalizeResponse(array $data): ProductCollectionInterface
     {
         $products = [];
         foreach (end($data) as $product) {

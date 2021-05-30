@@ -23,6 +23,14 @@ final class Product implements ProductInterface
     }
 
     /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
      * @return array
      */
     public function toArray(): array
