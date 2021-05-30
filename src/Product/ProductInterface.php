@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 namespace App\Product;
 
-interface ProductInterface
+interface ProductInterface extends ToArrayInterface
 {
-    /**
-     * @return array
-     */
-    public function toArray(): array;
-
     /**
      * @return string
      */

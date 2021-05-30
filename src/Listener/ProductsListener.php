@@ -3,6 +3,7 @@
 namespace App\Listener;
 
 use App\Event\GetProductsEvent;
+use App\Product\ProductInterface;
 use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Monolog\Logger;
@@ -30,6 +31,7 @@ class ProductsListener
     public function logProducts(Event $event): bool
     {
         if ($event instanceof GetProductsEvent) {
+            /** @var ProductInterface $product */
             foreach ($event->getProducts() as $product) {
                 $this->logger->info(
                     'Product added: ' . $product->getId(),

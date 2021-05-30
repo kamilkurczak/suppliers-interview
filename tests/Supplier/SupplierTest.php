@@ -6,8 +6,8 @@ namespace App\Tests\Supplier;
 
 use App\Parser\JsonParser;
 use App\Parser\XmlParser;
+use App\Product\ProductCollectionInterface;
 use App\Product\ProductDenormalizer;
-use App\Product\ProductInterface;
 use App\Supplier\Supplier;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -33,7 +33,7 @@ final class SupplierTest extends TestCase
         );
 
         $products = $supplier->getProducts();
-        $this->assertInstanceOf(ProductInterface::class, $products);
+        $this->assertInstanceOf(ProductCollectionInterface::class, $products);
         $this->assertCount(3, $products->toArray());
     }
 
@@ -51,7 +51,7 @@ final class SupplierTest extends TestCase
         );
 
         $products = $supplier->getProducts();
-        $this->assertInstanceOf(ProductInterface::class, $products);
+        $this->assertInstanceOf(ProductCollectionInterface::class, $products);
         $this->assertCount(8, $products->toArray());
     }
 }

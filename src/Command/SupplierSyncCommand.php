@@ -45,7 +45,7 @@ class SupplierSyncCommand extends Command
             $products = $this->suppliers->getProducts($name);
 
             $table = new Table($output);
-            $table->setHeaders(array('ID', 'Name', 'Desc'))->setRows($products->ToArray());
+            $table->setHeaders(array('ID', 'Name', 'Desc'))->setRows($products->toArray());
             $table->render();
 
         } catch (\InvalidArgumentException | InvalidParserException $exception) {
